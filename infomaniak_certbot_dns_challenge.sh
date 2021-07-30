@@ -12,7 +12,7 @@ domain_id="$CERTBOT_DOMAIN"
 challenge_record="_acme-challenge" 
 
 # path to secret token
-secret_token_path="./secret_token"
+secret_token_path="$(dirname ${BASH_SOURCE[0]})/secret_token"
 secret_token=$(cat $secret_token_path)
 
 # set by certbot
