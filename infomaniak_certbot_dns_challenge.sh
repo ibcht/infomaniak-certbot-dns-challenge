@@ -26,7 +26,7 @@ do
   then
     result=$(curl -s -X PUT -H "Authorization: Bearer $secret_token" -d target=${new_challenge_value} -d ttl=7200 "${api_url}/1/domain/${domain_id}/dns/record/${record_id}" | jq ".result" | sed "s/\"//g")
     # sleep est requis le temps que la zone soit propagée
-    [[ $result == "success" ]] && sleep 30 && exit 0 
+    [[ $result == "success" ]] && apachectl restart && sleep 30 && exit 0 
   fi
 done
 
